@@ -1,5 +1,5 @@
-#ifndef CONSOLEINFORMATION_H
-#define CONSOLEINFORMATION_H
+#ifndef CONSOLEINF_H
+#define CONSOLEINF_H
 #include <stdio.h>
 
 class ConsoleInf
@@ -10,4 +10,4 @@ public:
 };
 
 
-#endif//CONSOLEINFORMATION_H
+#endif//CONSOLEINF_H
