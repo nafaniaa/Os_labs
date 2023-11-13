@@ -1,6 +1,6 @@
 #ifndef BANKACCOUNT_H
 #define BANKACCOUNT_H
-#include "ConsoleInformation.h"
+#include "ConsoleInf.h"
 #include <mutex> //The mutex class is a synchronization primitive that can be used to protect shared data from being simultaneously accessed by multiple threads.
 #include <thread> //Class to represent individual threads of execution.
 
