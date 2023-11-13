@@ -13,17 +13,17 @@ BankAccount::BankAccount(float initialValue)
 void BankAccount::modification(float operation){
 	std::lock_guard<std::mutex> mtxGuard(mtx1); 
 
-	//äëÿ ñåáÿ
-	/*Ìüþòåêñ ïðåäîòâðàùàåò îäíîâðåìåííîå âûïîëíåíèå äðóãèõ ïîòîêîâ 
-	ñ òàêîé æå çàùèòîé è äîñòóï ê îäíèì è òåì æå ÿ÷åéêàì ïàìÿòè .*/
+	//Ã¤Ã«Ã¿ Ã±Ã¥Ã¡Ã¿
+	/*ÃŒÃ¼Ã¾Ã²Ã¥ÃªÃ± Ã¯Ã°Ã¥Ã¤Ã®Ã²Ã¢Ã°Ã Ã¹Ã Ã¥Ã² Ã®Ã¤Ã­Ã®Ã¢Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã¥ Ã¢Ã»Ã¯Ã®Ã«Ã­Ã¥Ã­Ã¨Ã¥ Ã¤Ã°Ã³Ã£Ã¨Ãµ Ã¯Ã®Ã²Ã®ÃªÃ®Ã¢ 
+	Ã± Ã²Ã ÃªÃ®Ã© Ã¦Ã¥ Ã§Ã Ã¹Ã¨Ã²Ã®Ã© Ã¨ Ã¤Ã®Ã±Ã²Ã³Ã¯ Ãª Ã®Ã¤Ã­Ã¨Ã¬ Ã¨ Ã²Ã¥Ã¬ Ã¦Ã¥ Ã¿Ã·Ã¥Ã©ÃªÃ Ã¬ Ã¯Ã Ã¬Ã¿Ã²Ã¨ .*/
 
-	ConsoleInformation::seblemenceOfCalculations();
+	ConsoleInf::seblemenceOfCalculations();
 	std::this_thread::sleep_for(std::chrono::milliseconds(75));
 	float valueBefore = this->value;
 	this->value += operation;
 	float valueAfter = this->value;
 
-	ConsoleInformation::accountModification(valueBefore, operation, valueAfter);
+	ConsoleInf::accountModification(valueBefore, operation, valueAfter);
 }
 
 float BankAccount::getValue()
