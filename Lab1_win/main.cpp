@@ -1,19 +1,49 @@
 #include<Windows.h>
 #include<stdio.h>
+//Этот код на языке C запускает внешний процесс с помощью функции CreateProcess
 
 int main(VOID) {
+    // Структура, содержащая информацию о запускаемом процессе
     STARTUPINFO startInfo;
+
+    // Структура, содержащая информацию о созданном процессе
     PROCESS_INFORMATION processInfo;
+
+    // Код завершения процесса
     DWORD exitCode;
+
+    // Инициализация структур нулями
     ZeroMemory(&startInfo, sizeof(startInfo));
     ZeroMemory(&processInfo, sizeof(processInfo));
-    if (!CreateProcess(L"C:\\Users\\vanbe\\source\\repos\\lab1_OS\\x64\\Debug\\process.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &startInfo, &processInfo)) {
+
+    // Попытка создать новый процесс
+    if (!CreateProcess(
+        L"C:\\Users\\vanbe\\source\\repos\\lab1_OS\\x64\\Debug\\process.exe", // Путь к исполняемому файлу
+        NULL,               // Аргументы командной строки (в данном случае отсутствуют)
+        NULL,               // Атрибуты защиты процесса (в данном случае отсутствуют)
+        NULL,               // Атрибуты защиты потока (в данном случае отсутствуют)
+        FALSE,              // Флаг наследования описателей процесса и потока (в данном случае не наследуются)
+        0,                  // Флаги создания процесса (в данном случае отсутствуют)
+        NULL,               // Окружение процесса (в данном случае используется окружение родительского процесса)
+        NULL,               // Текущий каталог процесса (в данном случае используется каталог родительского процесса)
+        &startInfo,         // Информация о старте процесса
+        &processInfo        // Информация о созданном процессе
+    )) {
+        // Вывод сообщения об ошибке, если создание процесса не удалось
         printf("Creating process is failed\n" + GetLastError());
         return 1;
     }
 
+    // Ожидание завершения процесса
     WaitForSingleObject(processInfo.hProcess, INFINITE);
+
+    // Закрытие дескрипторов процесса и потока
     CloseHandle(processInfo.hProcess);
     CloseHandle(processInfo.hThread);
+
+    // Возвращение из программы
     return 0;
 }
+
+//Этот код создает новый процесс, запуская исполняемый файл process.exe, 
+//ожидает его завершения и закрывает соответствующие дескрипторы.
